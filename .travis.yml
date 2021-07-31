@@ -1,0 +1,16 @@
+sudo: required # 관리자 권한 갖기
+
+language: generic # 언어(플랫폼)을 선택
+
+services: # 도커 환경 구성
+ - docker
+
+before_install: # 스크립트를 실행할 수 있는 환경 구성
+ - echo "start Creating an image with dockerfile"
+ - docker build -t bottleh/docker-react-app -f Dockerfile.dev .
+
+script: # 실행할 스크립트(테스트 실행)
+ - docker run -e CI=true bottleh/docker-react-app npm run test -- --coverage
+
+after_success: # 테스트 성공 후 할일
+ - echo "Test Success"
