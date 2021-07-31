@@ -10,6 +10,8 @@ Docker를 이용한 간단한 App을 배포해보기 위한 repo입니다.
 - node.js
 - Nginx
 - docker, docker-compose
+- AWS
+- Travis-CI
 
 
 
