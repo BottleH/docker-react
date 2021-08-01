@@ -12,5 +12,14 @@ before_install: # 스크립트를 실행할 수 있는 환경 구성
 script: # 실행할 스크립트(테스트 실행)
  - docker run -e CI=true bottleh/docker-react-app npm run test -- --coverage
 
-after_success: # 테스트 성공 후 할일
- - echo "Test Success"
+deploy: # 배포 관련설정
+  provider: elasticbeanstalk #외부 서비스 표시(s3, elasticbeanstalk 등)
+  region: "us-east-2" # 현재 사용하고 있는 AWS의 서비스가 위치하고 있는 물리적 장소
+  app: "docker-react-app" # 생성된 어플리케이션의 이름
+  env: "Dockerreactapp-env" # 환경의 이름
+  bucket_name: "elasticbeanstalk-us-east-2-022254954626" # 해당 elasticbeanstalk을 위한 s3 버켓 이름
+  bucket_path: "docker-react-app" # 해당 elasticbeanstalk을 위한 s3 버켓 이름
+  on:
+    branch: main # 어떤 브랜치에 Push를 할때 AWS에 배포를 할것인지
+access_key_id: $AWS_ACCESS_KY
+secret_access_key: $AWS_SECRET_KEY
