@@ -21,5 +21,6 @@ deploy: # 배포 관련설정
   bucket_path: "docker-react-app" # 해당 elasticbeanstalk을 위한 s3 버켓 이름
   on:
     branch: main # 어떤 브랜치에 Push를 할때 AWS에 배포를 할것인지
-access_key_id: $AWS_ACCESS_KY
-secret_access_key: $AWS_SECRET_KEY
+
+  access_key_id: $AWS_ACCESS_KY
+  secret_access_key: $AWS_SECRET_KEY
