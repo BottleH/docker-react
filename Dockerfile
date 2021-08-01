@@ -14,6 +14,6 @@ CMD [ "npm", "run", "build" ]
 
 # nginx를 위한 베이스이미지`
 FROM nginx
-
+EXPOSE 80
 COPY --from=builder /usr/src/app/build /usr/share/nginx/html
 # 여기는 run stage임. 빌드파일들을 생성하는 것, build 폴더로 들어감
